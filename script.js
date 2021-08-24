@@ -93,4 +93,31 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     setClock('timer', deadLine);
+
+    // Modal window
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        btn = document.querySelectorAll('.description-btn');
+
+    btn.forEach(function(item) {
+        item.addEventListener('click', function() {
+            overlay.style.display = 'block';
+            this.classList.add('more-splash');
+            document.body.style.overflow = 'hidden'; //Запрет прокрутки страницы, пока открыто модальное окно           
+        })
+    })
+    
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'; //Запрет прокрутки страницы, пока открыто модальное окно
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = ''; // Отмена запрета на прокрутку.
+    });
 });
